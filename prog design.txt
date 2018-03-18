@@ -1,0 +1,27 @@
+programma design
+
+
+
+Loop : lees hall sensor
+	als running status
+		als sensor = puls
+			werkbij km's 
+			laatste momment van lopen is nu
+		anders
+			laatste moment van lopen is plus 1
+			als laatstem moment van lopen langer dan 5 min geleden
+				running status = false
+				ende sessie time = nu
+		eindals
+	anders (geen running status)
+		als sensr = puls
+			runnning status = weer waar
+			laatste moment van lopen is nu
+			werkbij km's
+		anders
+			niets.
+		eindals
+eindeloop
+
+
+		

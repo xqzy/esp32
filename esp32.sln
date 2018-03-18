@@ -5,6 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D11CA397-15B2-49DA-A0FF-3A86FDEC67E3}"
 	ProjectSection(SolutionItems) = preProject
+		prog design.txt = prog design.txt
+		TextFile1.txt = TextFile1.txt
+		user manual.txt = user manual.txt
 		webdesign.txt = webdesign.txt
 	EndProjectSection
 EndProject
