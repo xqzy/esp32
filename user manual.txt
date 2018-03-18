@@ -1,0 +1,5 @@
+Web Interface
+
+connect to 192.168.0.28 (address programmed as static IP in wifi router)
+
+
