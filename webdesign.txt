@@ -3,7 +3,16 @@ webpagina roxy
 wat moet erop?
 
 ren info
+- running y/n
+- duration laatste sessie
+- time since last session
+- total day
+- record day
+- total week
+
 
 temperatuur
 
 laatste tweet
+
+time system is up:
