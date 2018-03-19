@@ -7,7 +7,14 @@
 const char* ssid = "stargate";
 const char* password = "4110656003373428";
 
-int ledPin = D5;
+int pinLed = D5; // pin on ESP that controls LED
+int pinHall = A0; // pin on ESP that is input of hall sensor
+int statRunning = 0; // status: is hamster currently running? (0-no 1-yes)
+int statDistDay = 0; // statistic of distance ran today (meters)
+int statDistWk = 0; //statistic of distance ran this week (meters)
+int statLastRun = 0; // statistic moment of last measured run TODO take right datetype
+int statLastRunDuration = 0; // statistic duration of last measured run TODO take right datetype
+
 int value = 0;
 float volts = 0.0;
 float tempc = 0.0;
@@ -20,8 +27,8 @@ void setup()
 	delay(10);
 
 
-	pinMode(ledPin, OUTPUT);
-	digitalWrite(ledPin, LOW);
+	pinMode(pinLed, OUTPUT);
+	digitalWrite(pinLed, LOW);
 
 	// Connect to WiFi network
 	Serial.println();
@@ -76,22 +83,43 @@ void loop()
 
 	int value = LOW;
 	if (request.indexOf("/LED=ON") != -1) {
-		digitalWrite(ledPin, HIGH);
+		digitalWrite(pinLed, HIGH);
 		value = HIGH;
 	}
 	if (request.indexOf("/LED=OFF") != -1) {
-		digitalWrite(ledPin, LOW);
+		digitalWrite(pinLed, LOW);
 		value = LOW;
 	}
 
+	returnWebPage(client);
 
 
+	
+
+}
+
+void returnWebPage(WiFiClient client) {
+	
 	// Return the response
 	client.println("HTTP/1.1 200 OK");
 	client.println("Content-Type: text/html");
 	client.println(""); //  do not forget this one
 	client.println("<!DOCTYPE HTML>");
 	client.println("<html>");
+
+	client.println("Hoe actief is Roxy ? <br> ");
+	if (statRunning == 1) {
+		client.println(" Roxy is nu lekker aan het rennen <br> ");
+	}
+	else {
+		client.println("Roxy doet nu even rustig aan.... <br> ");
+	}
+	client.println("De laatste sessie duurde ");
+	client.println(statLastRunDuration);
+	client.println(" minuten. <br> ");
+	client.println("De laatste sessie is ");
+	client.println(statLastRun);
+	client.println(" minuten geleden. <br>");
 
 	client.println("Het is lekker warm bij Roxy..<br> ");
 
@@ -122,6 +150,5 @@ void loop()
 	delay(1);
 	Serial.println("Client disconnected");
 	Serial.println("");
-
 
 }
