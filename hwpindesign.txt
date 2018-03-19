@@ -1,0 +1,8 @@
+A0 = hall sensor
+A1 = temperature sensor
+D5 = pinled
+
+to be defined
+
+pins for digital display.....
+
