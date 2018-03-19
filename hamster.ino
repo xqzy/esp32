@@ -106,7 +106,8 @@ void returnWebPage(WiFiClient client) {
 	client.println(""); //  do not forget this one
 	client.println("<!DOCTYPE HTML>");
 	client.println("<html>");
-
+	client.println("<H1> Roxy </H1>");
+	client.println("<H2> Activiteit </H2>");
 	client.println("Hoe actief is Roxy ? <br> ");
 	if (statRunning == 1) {
 		client.println(" Roxy is nu lekker aan het rennen <br> ");
@@ -128,12 +129,13 @@ void returnWebPage(WiFiClient client) {
 	tempc = volts*100.0*0.66;
 	// voltage range sensor = 0-5 but esp has 0-3.3V..
 
-
+	client.println("<H2> Temperatuur </H2>");
 	client.println("Het is ");
 	client.println(tempc);
 	client.println(" graden.");
 	client.println("<br><br>");
 
+	client.println("<H2> Schakelaar </H2>");
 	client.print("Led pin is now: ");
 
 	if (value == HIGH) {
