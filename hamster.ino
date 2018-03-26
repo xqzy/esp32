@@ -28,6 +28,7 @@ void setup()
 
 
 	pinMode(pinLed, OUTPUT);
+	pinMode(pinHall, INPUT);
 	digitalWrite(pinLed, LOW);
 
 	// Connect to WiFi network
@@ -58,13 +59,19 @@ void setup()
 
 void loop()
 {
-
+	int readHall;
 	// Serial.print("temperature= ");
 	// Serial.println(tempc);
 
 	// Check if a client has connected
 	WiFiClient client = server.available();
 	if (!client) {
+	
+		readHall = analogRead(pinHall);
+		Serial.print("Hall value: ");
+		Serial.print(readHall);
+		Serial.println();
+		delay(250);
 		return;
 	}
 
@@ -90,6 +97,8 @@ void loop()
 		digitalWrite(pinLed, LOW);
 		value = LOW;
 	}
+
+	
 
 	returnWebPage(client);
 

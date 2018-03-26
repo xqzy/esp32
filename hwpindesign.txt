@@ -1,5 +1,6 @@
-A0 = hall sensor
+
 A1 = temperature sensor
+D2 = hall sensor (digital)
 D5 = pinled
 
 to be defined
